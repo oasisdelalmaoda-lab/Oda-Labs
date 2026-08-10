@@ -208,6 +208,37 @@
   .form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:var(--accent)}
   .form .btn{justify-content:center;margin-top:6px}
 
+  /* DIAGNÓSTICO — módulo de 2 pasos */
+  .dg-steps{display:flex;align-items:center;gap:10px;margin-bottom:20px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#95909f}
+  .dg-steps .bar{flex:1;height:1px;background:var(--line-d)}
+  .dg-steps .on{color:var(--accent-2)}
+  [hidden]{display:none !important}
+  .dg-stack{display:flex;flex-direction:column;gap:12px}
+  .dg-sub{font-family:'Space Mono',monospace;font-size:11.5px;color:#95909f;line-height:1.5}
+  .dg-lead{background:#0F0E14;border:1px solid #2c2a37;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .dg-lead b{display:block;font-size:16px;color:#F4F0E8;margin-top:4px}
+  .dg-mini{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#95909f}
+  .dg-edit{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#95909f;background:none;border:1px solid var(--line-d);border-radius:999px;padding:7px 13px;cursor:pointer}
+  .dg-edit:hover{color:#F4F0E8}
+  .dg-g5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .dg-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .dg-chip{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:11px 6px;border-radius:12px;cursor:pointer;background:#0F0E14;color:#F4F0E8;border:1px solid #2c2a37;font-family:'Sora';transition:.18s}
+  .dg-chip:hover{border-color:#4a4757}
+  .dg-chip.sel{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-1px)}
+  .dg-chip .d{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+  .dg-chip .n{font-weight:800;font-size:19px;margin-top:3px}
+  .dg-chip .m{font-family:'Space Mono',monospace;font-size:10px;opacity:.6;margin-top:2px}
+  .dg-chip.h{font-size:14.5px;font-weight:600;padding:12px 6px}
+  .btn-oda-light{background:var(--paper);color:var(--ink)}
+  .btn-oda-light:hover{background:#fff;transform:translateY(-1px)}
+  .dg-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .dg-ok{width:44px;height:44px;border-radius:12px;background:rgba(90,75,255,.16);border:1px solid rgba(90,75,255,.5);display:flex;align-items:center;justify-content:center}
+  .dg-recap{background:#0F0E14;border:1px solid #2c2a37;border-radius:14px;padding:16px;display:grid;gap:9px;font-size:14.5px;color:#b7b3c2}
+  .dg-recap div{display:flex;justify-content:space-between;gap:12px}
+  .dg-check{display:grid;gap:12px;max-width:480px;margin:26px 0}
+  .dg-check li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:15px;color:#b7b3c2}
+  @media(max-width:520px){.dg-g5{grid-template-columns:repeat(3,1fr)}.dg-g3{grid-template-columns:repeat(2,1fr)}}
+
   footer{background:var(--ink);color:#7c7889;border-top:1px solid #26242f;padding:30px 0}
   footer .row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px}
   footer .brand{color:#fff}
@@ -530,13 +561,13 @@
     <div class="sec-head">
       <span class="eyebrow">Planes</span>
       <h2>Un plan para cada etapa de tu empresa.</h2>
-      <p>Precios de referencia en pesos; el valor final se ajusta al alcance real de tu operación.</p>
+      <p>Precios de referencia en dólares (USD); el valor final se ajusta al alcance real de tu operación.</p>
     </div>
     <div class="plans">
       <div class="plan">
         <span class="pill">Start</span>
         <h3>Ordena lo básico</h3>
-        <div class="price">$2.5M–4M <small>COP</small></div>
+        <div class="price">$800–$1,300 <small>USD</small></div>
         <p class="desc">Para empresas pequeñas que necesitan control por primera vez.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Diagnóstico y organización</li>
@@ -551,7 +582,7 @@
         <span class="tagline-feat">El más elegido</span>
         <span class="pill">Grow</span>
         <h3>Toma el control</h3>
-        <div class="price">$5M–8M <small>COP</small></div>
+        <div class="price">$1,600–$2,500 <small>USD</small></div>
         <p class="desc">El sistema que ordena la operación completa de una pyme en marcha.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Start</li>
@@ -565,7 +596,7 @@
       <div class="plan">
         <span class="pill">Pro</span>
         <h3>Escala con estructura</h3>
-        <div class="price">desde $9M <small>COP</small></div>
+        <div class="price">desde $2,900 <small>USD</small></div>
         <p class="desc">Para empresas organizadas que quieren automatizar y crecer.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Grow</li>
@@ -585,7 +616,7 @@
       <div class="support-grid">
         <div class="stier">
           <div class="pill">Esencial</div>
-          <div class="amt">$250.000 <small>/mes</small></div>
+          <div class="amt">$80 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Respaldo y copias de seguridad</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ajustes pequeños</li>
@@ -594,7 +625,7 @@
         </div>
         <div class="stier feat">
           <div class="pill">Plus</div>
-          <div class="amt">$500k–700k <small>/mes</small></div>
+          <div class="amt">$160–$220 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Esencial</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mejoras y nuevas automatizaciones</li>
@@ -603,7 +634,7 @@
         </div>
         <div class="stier">
           <div class="pill">Premium</div>
-          <div class="amt">$1M–2M <small>/mes</small></div>
+          <div class="amt">$320–$650 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mejora continua y nuevas IA</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Dashboards y reuniones</li>
@@ -622,31 +653,42 @@
       <span class="eyebrow" style="color:var(--accent-2)">Empecemos</span>
       <h2>Agenda un diagnóstico gratis.</h2>
       <p>30 minutos para entender tu operación y mostrarte, sin compromiso, cómo se vería tu propio sistema. Sales con claridad, no con una cotización genérica.</p>
+      <ul class="dg-check">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:3px"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cuatro datos ahora. El resto lo hablamos en la reunión.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:3px"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eliges día y hora de una vez, 30 minutos por videollamada.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:3px"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tu caso queda abierto en nuestro panel y le hacemos seguimiento hasta el cierre.</span></li>
+      </ul>
       <p style="font-family:'Space Mono',monospace;font-size:14px;color:#95909f"><a href="mailto:a.suarez@oasisdelalma.co" style="color:#95909f">a.suarez@oasisdelalma.co</a> · <a href="https://wa.me/573156896347" style="color:#95909f">WhatsApp 315 689 6347</a></p>
     </div>
-    <form class="form" onsubmit="return handleSubmit(event)">
-      <div><label>Nombre</label><input required name="nombre" placeholder="Tu nombre"></div>
-      <div><label>Empresa</label><input required name="empresa" placeholder="Nombre de tu empresa"></div>
-      <div><label>WhatsApp</label><input required name="wpp" placeholder="+57"></div>
-      <div><label>¿Qué quieres resolver primero?</label>
-        <select name="alcance" required>
-          <option value="" disabled selected>Elige un área…</option>
-          <option>Inventario y costos</option>
-          <option>Ventas y caja (POS)</option>
-          <option>Finanzas y cartera</option>
-          <option>Pedidos y domicilios</option>
-          <option>Nómina y personal</option>
-          <option>Un portal para mis clientes</option>
-          <option>Bots para WhatsApp y redes</option>
-          <option>Todo el negocio</option>
-          <option>Aún no lo sé</option>
-        </select>
-      </div>
-      <div><label>¿Qué te gustaría lograr en los próximos 3 meses?</label><textarea name="meta" rows="2" placeholder="Ej: saber cuánto gano, dejar el Excel, atender clientes 24/7…"></textarea></div>
-      <div><label>¿Qué es lo que más te duele hoy?</label><textarea name="msg" rows="2" placeholder="Ej: no tengo control del inventario…"></textarea></div>
-      <button class="btn btn-primary" type="submit">Quiero mi diagnóstico</button>
-    </form>
-  </div>
+    <div class="form" id="dg">
+      <div class="dg-steps"><span id="dgS1" class="on">01 Tus datos</span><span class="bar"></span><span id="dgS2">02 Día y hora</span></div>
+      <form id="dgForm" class="dg-stack" onsubmit="return dgSubmit(event)">
+        <div><label>Nombre</label><input required name="nombre" placeholder="Tu nombre"></div>
+        <div><label>Empresa</label><input required name="empresa" placeholder="Nombre de tu empresa"></div>
+        <div><label>Teléfono</label><input required type="tel" name="tel" placeholder="+57"></div>
+        <div><label>Tipo de empresa</label>
+          <select name="tipo" required onchange="dgTipo(this.value)">
+            <option value="" disabled selected>Elige el sector…</option>
+            <option>Comercio o retail</option>
+            <option>Restaurante, café o bar</option>
+            <option>Salud y bienestar</option>
+            <option>Construcción</option>
+            <option>Manufactura o producción</option>
+            <option>Servicios profesionales</option>
+            <option>Logística y transporte</option>
+            <option>Educación</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div id="dgOtro" hidden><label>¿A qué se dedica tu empresa?</label><input name="tipoOtro" placeholder="Ej: floristería, taller de motos, agencia de viajes"></div>
+        <div class="dg-row" style="margin-top:2px">
+          <button class="btn btn-primary" type="submit">Quiero mi diagnóstico</button>
+          <span class="dg-sub">Sigue el paso 02: eliges la hora.</span>
+        </div>
+      </form>
+      <div id="dgAgenda" hidden></div>
+      <div id="dgDone" hidden></div>
+    </div>  </div>
 </section>
 
 <footer>
@@ -664,16 +706,98 @@
   // reveal on scroll
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('section .sec-head, .case, .step, .mod, .plan, .quote, .why .item').forEach((el,i)=>{el.classList.add('fade');el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
-  function handleSubmit(e){
+  /* ===== DIAGNÓSTICO: lead + agenda ===== */
+  const LEAD_ENDPOINT = '';            // URL del panel ODA Labs (POST JSON). Vacío = no envía.
+  const WA_NUMBER = '573156896347';
+  const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
+  const MON = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const TIMES = ['9:00 am','10:00 am','11:00 am','2:00 pm','3:00 pm','4:00 pm'];
+  const dg = { lead:null, day:null, time:null };
+
+  function dgTipo(v){ const w=document.getElementById('dgOtro'); w.hidden = v!=='Otro'; w.querySelector('input').required = v==='Otro'; }
+
+  function dgDays(n){
+    const out=[], d=new Date(); d.setHours(0,0,0,0);
+    while(out.length<n){ d.setDate(d.getDate()+1); if(d.getDay()===0||d.getDay()===6) continue; out.push(new Date(d)); }
+    return out;
+  }
+
+  function dgSave(lead){
+    if(!LEAD_ENDPOINT) return;
+    fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)})
+      .catch(err=>console.warn('[ODA] lead no enviado al panel:',err));
+  }
+
+  function dgPane(id){
+    ['dgForm','dgAgenda','dgDone'].forEach(k=>document.getElementById(k).hidden = k!==id);
+    document.getElementById('dgS1').className = id==='dgForm' ? 'on' : '';
+    document.getElementById('dgS2').className = id==='dgForm' ? '' : 'on';
+  }
+
+  function dgSubmit(e){
     e.preventDefault();
-    const f=e.target;
-    const alc = f.alcance.value ? (' Quiero resolver primero: '+f.alcance.value+'.') : '';
-    const meta = f.meta.value ? (' Meta a 3 meses: '+f.meta.value+'.') : '';
-    const dolor = f.msg.value ? (' Lo que más me duele hoy: '+f.msg.value+'.') : '';
-    const txt = encodeURIComponent('Hola ODA Labs, soy '+f.nombre.value+' de '+f.empresa.value+'. Mi WhatsApp: '+f.wpp.value+'.'+alc+meta+dolor+' Quiero agendar un diagnóstico.');
-    window.open('https://wa.me/573156896347?text='+txt, '_blank');
+    const f=e.target, v=n=>f.elements[n]?f.elements[n].value:'';
+    dg.lead = {
+      id:'ODA-'+Math.floor(1000+Math.random()*9000),
+      nombre:v('nombre'), empresa:v('empresa'), tel:v('tel'),
+      tipo: v('tipo')==='Otro' ? (v('tipoOtro')||'Otro') : v('tipo'),
+      sector:v('tipo'), origen:'landing · diagnóstico', estado:'nuevo', creado:new Date().toISOString()
+    };
+    dgSave(dg.lead);
+    dgAgenda();
     return false;
   }
+
+  function dgAgenda(){
+    const days=dgDays(5), l=dg.lead;
+    document.getElementById('dgAgenda').innerHTML =
+      '<div class="dg-stack" style="gap:18px">'+
+        '<div class="dg-lead"><div><span class="dg-mini">Caso '+l.id+' · registrado</span><b>'+l.nombre+' · '+l.empresa+'</b></div>'+
+        '<button type="button" class="dg-edit" onclick="dgPane(\'dgForm\')">Editar</button></div>'+
+        '<div><div class="dg-mini" style="margin-bottom:10px">Elige el día</div><div class="dg-g5">'+
+          days.map(d=>{const k=d.toISOString().slice(0,10);
+            return '<button type="button" class="dg-chip'+(dg.day===k?' sel':'')+'" onclick="dgPick(\'day\',\''+k+'\')">'+
+              '<span class="d">'+DOW[d.getDay()]+'</span><span class="n">'+d.getDate()+'</span><span class="m">'+MON[d.getMonth()]+'</span></button>';}).join('')+
+        '</div></div>'+
+        '<div><div class="dg-mini" style="margin-bottom:10px">Elige la hora · 30 min · GMT-5</div><div class="dg-g3">'+
+          TIMES.map(t=>'<button type="button" class="dg-chip h'+(dg.time===t?' sel':'')+'" onclick="dgPick(\'time\',\''+t+'\')">'+t+'</button>').join('')+
+        '</div></div>'+
+        '<div class="dg-row"><button type="button" class="btn '+(dg.day&&dg.time?'btn-primary':'')+'" style="'+(dg.day&&dg.time?'':'background:#2A2833;color:#95909f;cursor:not-allowed')+'" onclick="dgConfirm()">Confirmar reunión</button>'+
+        '<span class="dg-sub">'+(dg.day&&dg.time?'Bloqueamos ese espacio para ti.':'Elige día y hora para continuar.')+'</span></div>'+
+      '</div>';
+    dgPane('dgAgenda');
+  }
+
+  function dgPick(k,v){ dg[k]=v; dgAgenda(); }
+
+  function dgLabel(){
+    const d=new Date(dg.day+'T12:00:00');
+    return 'el '+DOW[d.getDay()]+' '+d.getDate()+' de '+MON[d.getMonth()]+' a las '+dg.time;
+  }
+
+  function dgConfirm(){
+    if(!dg.day||!dg.time) return;
+    const l=dg.lead;
+    l.estado='diagnóstico agendado'; l.cita=dg.day+' '+dg.time;
+    dgSave(l);
+    const wa='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hola ODA Labs, soy '+l.nombre+' de '+l.empresa+'. Confirmo mi diagnóstico '+dgLabel()+'. Caso '+l.id+'.');
+    document.getElementById('dgDone').innerHTML =
+      '<div class="dg-stack" style="gap:16px">'+
+        '<div class="dg-ok"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#8f83ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'+
+        '<div><h3 style="font-size:24px;font-weight:800;color:#fff">Listo, '+l.nombre+'. Nos vemos '+dgLabel()+'.</h3>'+
+        '<p style="color:#b7b3c2;font-size:15.5px;margin-top:10px">Te llega la invitación con el enlace al teléfono '+l.tel+'. Tu caso '+l.id+' ya está abierto en nuestro panel y ahí seguimos el proceso contigo.</p></div>'+
+        '<div class="dg-recap">'+
+          '<div><span class="dg-mini">Empresa</span><span style="color:#F4F0E8">'+l.empresa+'</span></div>'+
+          '<div><span class="dg-mini">Sector</span><span style="color:#F4F0E8">'+l.tipo+'</span></div>'+
+          '<div><span class="dg-mini">Estado</span><span style="color:#8f83ff">Diagnóstico agendado</span></div>'+
+        '</div>'+
+        '<div class="dg-row"><a class="btn btn-oda-light" href="'+wa+'" target="_blank" rel="noopener">Confírmalo por WhatsApp</a>'+
+        '<button type="button" class="dg-edit" style="border:none;text-decoration:underline" onclick="dgReset()">Agendar otra</button></div>'+
+      '</div>';
+    dgPane('dgDone');
+  }
+
+  function dgReset(){ dg.lead=null; dg.day=null; dg.time=null; document.getElementById('dgForm').reset(); dgTipo(''); dgPane('dgForm'); }
 </script>
 </body>
 </html>
