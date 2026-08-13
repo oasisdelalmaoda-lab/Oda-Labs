@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-08-13 · diagnostico-cal-com · precios-usd">
+<meta name="oda-version" content="2026-08-13 · diagnostico-cal-com-v5 · precios-usd">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODA Labs — El sistema operativo de tu empresa, con tu marca</title>
 <meta name="description" content="Estudio de software de gestión a la medida para pymes. Con tu marca, integrado a lo que ya usas, montado en semanas.">
@@ -703,7 +703,7 @@
     <span>© 2026 ODA Labs</span>
   </div>
 </footer>
-<!-- ODA build: 2026-08-13 · v4 cal.com -->
+<!-- ODA build: 2026-08-13 · v5 caso creciente -->
 
 <script>
   // reveal on scroll
@@ -737,7 +737,7 @@
     e.preventDefault();
     const f=e.target, v=n=>f.elements[n]?f.elements[n].value:'';
     dg.lead = {
-      id:'ODA-'+Math.floor(1000+Math.random()*9000),
+      id:'ODA-'+(100+Math.floor((Date.now()-new Date('2026-08-13T00:00:00-05:00').getTime())/300000)),
       nombre:v('nombre'), empresa:v('empresa'), tel:v('tel'),
       tipo: v('tipo')==='Otro' ? (v('tipoOtro')||'Otro') : v('tipo'),
       sector:v('tipo'), origen:'landing · diagnóstico', estado:'nuevo', creado:new Date().toISOString()
