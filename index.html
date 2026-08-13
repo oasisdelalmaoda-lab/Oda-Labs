@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-08-10 · diagnostico-2-pasos · precios-usd">
+<meta name="oda-version" content="2026-08-13 · diagnostico-cal-com · precios-usd">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODA Labs — El sistema operativo de tu empresa, con tu marca</title>
 <meta name="description" content="Estudio de software de gestión a la medida para pymes. Con tu marca, integrado a lo que ya usas, montado en semanas.">
@@ -240,6 +240,7 @@
   .dg-check li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:15px;color:#b7b3c2}
   @media(max-width:520px){.dg-g5{grid-template-columns:repeat(3,1fr)}.dg-g3{grid-template-columns:repeat(2,1fr)}}
 
+  .dg-cal{background:#fff;border-radius:14px;overflow:hidden;min-height:560px}
   footer{background:var(--ink);color:#7c7889;border-top:1px solid #26242f;padding:30px 0}
   footer .row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px}
   footer .brand{color:#fff}
@@ -702,27 +703,23 @@
     <span>© 2026 ODA Labs</span>
   </div>
 </footer>
-<!-- ODA build: 2026-08-10 · v3 -->
+<!-- ODA build: 2026-08-13 · v4 cal.com -->
 
 <script>
   // reveal on scroll
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('section .sec-head, .case, .step, .mod, .plan, .quote, .why .item').forEach((el,i)=>{el.classList.add('fade');el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
+  /* Cal.com embed loader */
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+
   /* ===== DIAGNÓSTICO: lead + agenda ===== */
   const LEAD_ENDPOINT = '';            // URL del panel ODA Labs (POST JSON). Vacío = no envía.
   const WA_NUMBER = '573156896347';
   const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
   const MON = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  const TIMES = ['9:00 am','10:00 am','11:00 am','2:00 pm','3:00 pm','4:00 pm'];
   const dg = { lead:null, day:null, time:null };
 
   function dgTipo(v){ const w=document.getElementById('dgOtro'); w.hidden = v!=='Otro'; w.querySelector('input').required = v==='Otro'; }
-
-  function dgDays(n){
-    const out=[], d=new Date(); d.setHours(0,0,0,0);
-    while(out.length<n){ d.setDate(d.getDate()+1); if(d.getDay()===0||d.getDay()===6) continue; out.push(new Date(d)); }
-    return out;
-  }
 
   function dgSave(lead){
     if(!LEAD_ENDPOINT) return;
@@ -751,52 +748,26 @@
   }
 
   function dgAgenda(){
-    const days=dgDays(5), l=dg.lead;
+    const l=dg.lead;
     document.getElementById('dgAgenda').innerHTML =
       '<div class="dg-stack" style="gap:18px">'+
         '<div class="dg-lead"><div><span class="dg-mini">Caso '+l.id+' · registrado</span><b>'+l.nombre+' · '+l.empresa+'</b></div>'+
         '<button type="button" class="dg-edit" onclick="dgPane(\'dgForm\')">Editar</button></div>'+
-        '<div><div class="dg-mini" style="margin-bottom:10px">Elige el día</div><div class="dg-g5">'+
-          days.map(d=>{const k=d.toISOString().slice(0,10);
-            return '<button type="button" class="dg-chip'+(dg.day===k?' sel':'')+'" onclick="dgPick(\'day\',\''+k+'\')">'+
-              '<span class="d">'+DOW[d.getDay()]+'</span><span class="n">'+d.getDate()+'</span><span class="m">'+MON[d.getMonth()]+'</span></button>';}).join('')+
-        '</div></div>'+
-        '<div><div class="dg-mini" style="margin-bottom:10px">Elige la hora · 30 min · GMT-5</div><div class="dg-g3">'+
-          TIMES.map(t=>'<button type="button" class="dg-chip h'+(dg.time===t?' sel':'')+'" onclick="dgPick(\'time\',\''+t+'\')">'+t+'</button>').join('')+
-        '</div></div>'+
-        '<div class="dg-row"><button type="button" class="btn '+(dg.day&&dg.time?'btn-primary':'')+'" style="'+(dg.day&&dg.time?'':'background:#2A2833;color:#95909f;cursor:not-allowed')+'" onclick="dgConfirm()">Confirmar reunión</button>'+
-        '<span class="dg-sub">'+(dg.day&&dg.time?'Bloqueamos ese espacio para ti.':'Elige día y hora para continuar.')+'</span></div>'+
+        '<div class="dg-cal" id="dgCal"></div>'+
+        '<span class="dg-sub">Los espacios se sincronizan en vivo con nuestros calendarios. Al confirmar recibes la invitación por correo con el enlace de la videollamada.</span>'+
       '</div>';
     dgPane('dgAgenda');
-  }
-
-  function dgPick(k,v){ dg[k]=v; dgAgenda(); }
-
-  function dgLabel(){
-    const d=new Date(dg.day+'T12:00:00');
-    return 'el '+DOW[d.getDay()]+' '+d.getDate()+' de '+MON[d.getMonth()]+' a las '+dg.time;
-  }
-
-  function dgConfirm(){
-    if(!dg.day||!dg.time) return;
-    const l=dg.lead;
-    l.estado='diagnóstico agendado'; l.cita=dg.day+' '+dg.time;
-    dgSave(l);
-    const wa='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hola ODA Labs, soy '+l.nombre+' de '+l.empresa+'. Confirmo mi diagnóstico '+dgLabel()+'. Caso '+l.id+'.');
-    document.getElementById('dgDone').innerHTML =
-      '<div class="dg-stack" style="gap:16px">'+
-        '<div class="dg-ok"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#8f83ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'+
-        '<div><h3 style="font-size:24px;font-weight:800;color:#fff">Listo, '+l.nombre+'. Nos vemos '+dgLabel()+'.</h3>'+
-        '<p style="color:#b7b3c2;font-size:15.5px;margin-top:10px">Te llega la invitación con el enlace al teléfono '+l.tel+'. Tu caso '+l.id+' ya está abierto en nuestro panel y ahí seguimos el proceso contigo.</p></div>'+
-        '<div class="dg-recap">'+
-          '<div><span class="dg-mini">Empresa</span><span style="color:#F4F0E8">'+l.empresa+'</span></div>'+
-          '<div><span class="dg-mini">Sector</span><span style="color:#F4F0E8">'+l.tipo+'</span></div>'+
-          '<div><span class="dg-mini">Estado</span><span style="color:#8f83ff">Diagnóstico agendado</span></div>'+
-        '</div>'+
-        '<div class="dg-row"><a class="btn btn-oda-light" href="'+wa+'" target="_blank" rel="noopener">Confírmalo por WhatsApp</a>'+
-        '<button type="button" class="dg-edit" style="border:none;text-decoration:underline" onclick="dgReset()">Agendar otra</button></div>'+
-      '</div>';
-    dgPane('dgDone');
+    Cal("init","diagnostico",{origin:"https://cal.com"});
+    Cal.ns.diagnostico("inline",{
+      elementOrSelector:"#dgCal",
+      calLink:"oda-labs/diagnostico",
+      layout:"month_view",
+      config:{ name:l.nombre, notes:'Caso '+l.id+' · '+l.empresa+' · '+l.tipo+' · Tel '+l.tel }
+    });
+    Cal.ns.diagnostico("ui",{cssVarsPerTheme:{light:{"cal-brand":"#5A4BFF"}},hideEventTypeDetails:false,layout:"month_view"});
+    Cal.ns.diagnostico("on",{action:"bookingSuccessful",callback:()=>{
+      l.estado='diagnóstico agendado'; dgSave(l);
+    }});
   }
 
   function dgReset(){ dg.lead=null; dg.day=null; dg.time=null; document.getElementById('dgForm').reset(); dgTipo(''); dgPane('dgForm'); }
