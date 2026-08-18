@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-08-13 · diagnostico-cal-com-v5 · precios-usd">
+<meta name="oda-version" content="2026-08-18 · diagnostico-supabase-v6 · precios-usd">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODA Labs — El sistema operativo de tu empresa, con tu marca</title>
 <meta name="description" content="Estudio de software de gestión a la medida para pymes. Con tu marca, integrado a lo que ya usas, montado en semanas.">
@@ -687,6 +687,7 @@
           <button class="btn btn-primary" type="submit">Quiero mi diagnóstico</button>
           <span class="dg-sub">Sigue el paso 02: eliges la hora.</span>
         </div>
+        <p id="dgErr" hidden style="font-family:'Space Mono',monospace;font-size:12.5px;color:#D64545;margin:0">No pudimos enviar tu diagnóstico. Intenta de nuevo.</p>
       </form>
       <div id="dgAgenda" hidden></div>
       <div id="dgDone" hidden></div>
@@ -703,7 +704,7 @@
     <span>© 2026 ODA Labs</span>
   </div>
 </footer>
-<!-- ODA build: 2026-08-13 · v5 caso creciente -->
+<!-- ODA build: 2026-08-18 · v6 supabase -->
 
 <script>
   // reveal on scroll
@@ -713,7 +714,8 @@
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 
   /* ===== DIAGNÓSTICO: lead + agenda ===== */
-  const LEAD_ENDPOINT = '';            // URL del panel ODA Labs (POST JSON). Vacío = no envía.
+  const SB_URL = 'https://jcvhrideueyscgfogdip.supabase.co';
+  const SB_KEY = 'sb_publishable_Ycko0bMOdKahQqGVJuDrQg_gHoTTWdk';
   const WA_NUMBER = '573156896347';
   const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
   const MON = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
@@ -722,9 +724,18 @@
   function dgTipo(v){ const w=document.getElementById('dgOtro'); w.hidden = v!=='Otro'; w.querySelector('input').required = v==='Otro'; }
 
   function dgSave(lead){
-    if(!LEAD_ENDPOINT) return;
-    fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)})
-      .catch(err=>console.warn('[ODA] lead no enviado al panel:',err));
+    return fetch(SB_URL+'/rest/v1/diagnosticos',{
+      method:'POST',
+      headers:{apikey:SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        empresa: lead.empresa,
+        contacto: lead.nombre+' · '+lead.tel,
+        sector: lead.tipo,
+        dolor: null,
+        herramientas: [],
+        presupuesto: 'Sin definir'
+      })
+    }).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); });
   }
 
   function dgPane(id){
@@ -742,8 +753,12 @@
       tipo: v('tipo')==='Otro' ? (v('tipoOtro')||'Otro') : v('tipo'),
       sector:v('tipo'), origen:'landing · diagnóstico', estado:'nuevo', creado:new Date().toISOString()
     };
-    dgSave(dg.lead);
-    dgAgenda();
+    const btn=f.querySelector('button[type=submit]'), err=document.getElementById('dgErr');
+    err.hidden=true; btn.disabled=true; btn.style.opacity='.6';
+    dgSave(dg.lead)
+      .then(()=>{ dgAgenda(); })
+      .catch(e=>{ console.warn('[ODA] envío falló:',e); err.hidden=false; })
+      .finally(()=>{ btn.disabled=false; btn.style.opacity=''; });
     return false;
   }
 
@@ -765,9 +780,7 @@
       config:{ name:l.nombre, notes:'Caso '+l.id+' · '+l.empresa+' · '+l.tipo+' · Tel '+l.tel }
     });
     Cal.ns.diagnostico("ui",{cssVarsPerTheme:{light:{"cal-brand":"#5A4BFF"}},hideEventTypeDetails:false,layout:"month_view"});
-    Cal.ns.diagnostico("on",{action:"bookingSuccessful",callback:()=>{
-      l.estado='diagnóstico agendado'; dgSave(l);
-    }});
+    Cal.ns.diagnostico("on",{action:"bookingSuccessful",callback:()=>{ l.estado='diagnóstico agendado'; }});
   }
 
   function dgReset(){ dg.lead=null; dg.day=null; dg.time=null; document.getElementById('dgForm').reset(); dgTipo(''); dgPane('dgForm'); }
