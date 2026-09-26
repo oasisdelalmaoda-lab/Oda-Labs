@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-09-26 · caso-oda-v13 · precios-usd">
+<meta name="oda-version" content="2026-09-26 · ya-tienes-sistema-v14 · precios-usd">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23F4F0E8'/%3E%3Ccircle cx='20' cy='20' r='12' fill='none' stroke='%2315141B' stroke-width='5' stroke-dasharray='10.7 3.4'/%3E%3Ccircle cx='20' cy='20' r='12' fill='none' stroke='%235A4BFF' stroke-width='5' stroke-dasharray='10.7 65' stroke-dashoffset='-24.8'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F4F0E8'/%3E%3Ccircle cx='20' cy='20' r='12' fill='none' stroke='%2315141B' stroke-width='5' stroke-dasharray='10.7 3.4'/%3E%3Ccircle cx='20' cy='20' r='12' fill='none' stroke='%235A4BFF' stroke-width='5' stroke-dasharray='10.7 65' stroke-dashoffset='-24.8'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODA Labs — El sistema operativo de tu empresa, con tu marca</title>
 <meta name="description" content="Estudio de software de gestión a la medida para pymes. Con tu marca, integrado a lo que ya usas, montado en semanas.">
@@ -151,6 +153,16 @@
   .bub.in{background:#202c33;color:#e9edef;align-self:flex-start;border-bottom-left-radius:4px}
   .bub.out{background:#005c4b;color:#eafff2;align-self:flex-end;border-bottom-right-radius:4px}
   .chatmock .tp{font-size:10px;color:#6b8079;align-self:center;margin-top:4px;font-family:'Space Mono',monospace}
+
+  /* UPGRADE (ya tienes sistema) */
+  .upg .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.upg .grid{grid-template-columns:1fr}}
+  .upg .item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:0 18px 40px -30px rgba(20,20,30,.5)}
+  .upg .item svg{width:22px;height:22px}
+  .upg .item b{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .upg .item p{font-size:14.5px;color:var(--muted);margin:0}
+  .upg .foot{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .upg .foot p{font-size:17px;font-weight:600;margin:0;max-width:620px}
 
   /* WHY */
   .why{background:var(--accent);color:#fff}
@@ -544,6 +556,29 @@
   </div>
 </section>
 
+<!-- UPGRADE -->
+<section class="upg" id="ya-tienes-sistema">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">¿Ya tienes un sistema?</span>
+      <h2>No lo tiramos. Lo ponemos a trabajar.</h2>
+      <p>Si ya tienes tu propio ERP o tus propias hojas de cálculo, construimos encima: automatizamos lo que hoy se hace a mano y te devolvemos las horas que se van en informes.</p>
+    </div>
+    <div class="grid">
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Informes que se arman solos</b><p>Ventas, cartera y cierre del mes llegan a tu correo o WhatsApp cada lunes. Sin copiar, pegar ni cruzar archivos.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M7.5 8l3.5 8M16.5 8l-3.5 8M6 8.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18 8.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM12 20.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Tus herramientas conectadas</b><p>Contabilidad, tienda, pasarela de pago y CRM se pasan la información entre sí. Se digita una sola vez.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4a6 6 0 016 6v4l2 3H4l2-3v-4a6 6 0 016-6zM10 20a2 2 0 004 0" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Alertas antes del problema</b><p>Stock bajo, pagos vencidos o pedidos sin despachar le avisan a la persona indicada, a tiempo.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 11-3.2-6.4M20 4v5h-5" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Tareas repetitivas en automático</b><p>Recordatorios de cobro, facturas, conciliaciones y mensajes de seguimiento corren solos en el servidor.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h18v16H3zM7 14v3M12 10v7M17 8v9" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Tableros gerenciales</b><p>Un tablero con tus cifras reales encima del sistema que ya tienes. Sin cambiar de software ni migrar todo.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 014 4v1a4 4 0 010 8v1a4 4 0 01-8 0v-1a4 4 0 010-8V7a4 4 0 014-4z" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>IA sobre tus datos</b><p>Pregúntale al sistema en palabras normales: «¿cuánto vendí este mes contra el anterior?» y responde con tus cifras.</p></div>
+    </div>
+    <div class="foot">
+      <p>No reemplazamos lo que funciona. Le quitamos el trabajo manual.</p>
+      <a class="btn btn-primary" href="#contacto">Revisemos tu sistema</a>
+    </div>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="why" id="porque">
   <div class="wrap">
@@ -747,7 +782,7 @@
 <script>
   // reveal on scroll
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('section .sec-head, .case, .step, .mod, .plan, .quote, .why .item').forEach((el,i)=>{el.classList.add('fade');el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
+  document.querySelectorAll('section .sec-head, .case, .step, .mod, .plan, .quote, .why .item, .upg .item').forEach((el,i)=>{el.classList.add('fade');el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
   /* Cal.com embed loader */
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 
