@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-09-26 · cta-por-seccion-v15 · precios-usd">
+<meta name="oda-version" content="2026-09-28 · movil-v16 · precios-usd">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%2315141B' stroke-width='7.5' stroke-dasharray='12.5 4'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%235A4BFF' stroke-width='7.5' stroke-dasharray='12.5 75' stroke-dashoffset='-29'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F4F0E8'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%2315141B' stroke-width='7.5' stroke-dasharray='12.5 4'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%235A4BFF' stroke-width='7.5' stroke-dasharray='12.5 75' stroke-dashoffset='-29'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,7 @@
   .brand .labs{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:5px;color:var(--accent);font-weight:400}
   .navlinks{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--muted)}
   .navlinks a:hover{color:var(--ink)}
-  @media(max-width:860px){.navlinks{display:none}}
+  @media(max-width:860px){.navlinks a:not(.btn){display:none}}
 
   /* HERO */
   .hero{padding:78px 0 64px;position:relative;overflow:hidden}
@@ -257,6 +257,49 @@
   footer{background:var(--ink);color:#7c7889;border-top:1px solid #26242f;padding:30px 0}
   footer .row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px}
   footer .brand{color:#fff}
+
+  /* MÓVIL */
+  @media(max-width:600px){
+    .wrap{padding:0 18px}
+    section{padding:52px 0}
+    .hero{padding:44px 0 44px}
+    .hero .sub{font-size:16px}
+    .hero .cta-row .btn{flex:1 1 100%;justify-content:center}
+    .sec-head{margin-bottom:28px}
+    .sec-head p{font-size:15.5px}
+    nav .row{height:60px}
+    .brand{font-size:17px;gap:8px}
+    .brand svg{width:28px;height:28px}
+    .navlinks .btn{padding:8px 14px !important;font-size:13px !important}
+    .mock{padding:10px;border-radius:16px}
+    .mock .app{grid-template-columns:40px 1fr}
+    .mock .side i{width:20px;height:20px}
+    .mock .body{padding:10px}
+    .mock .kpis{gap:6px}
+    .mock .kpi{padding:7px}
+    .mock .kpi .val{font-size:13px}
+    .case{padding:14px;border-radius:16px}
+    .shot{height:180px}
+    .case h3{font-size:19px}
+    .cover .grid{gap:10px}
+    .mod{padding:14px}
+    .lchip{font-size:13px;padding:6px 12px 6px 6px}
+    .botband ul{margin-bottom:18px}
+    .plan{padding:22px}
+    .support{padding:20px 18px}
+    .final h2{font-size:28px}
+    .form{padding:18px}
+    .sec-cta{margin-top:28px}
+    .sec-cta .btn,.upg .foot .btn{width:100%;justify-content:center}
+    .btn{white-space:normal;text-align:center}
+    .dg-cal{min-height:520px;margin:0 -8px}
+    footer .row{flex-direction:column;align-items:flex-start;gap:10px}
+    .emp-box{padding:20px !important}
+    .emp-box .btn{width:100%;justify-content:center}
+  }
+  @media(max-width:330px){
+    .navlinks .btn{padding:7px 11px !important;font-size:12px !important}
+  }
 
   .fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .fade.in{opacity:1;transform:none}
@@ -676,7 +719,7 @@
     </div>
     <p class="plan-note">Los precios cubren diseño, desarrollo e implementación. Los servicios de terceros —pasarela de pagos, hosting, firma digital, licencias— se contratan a nombre de tu empresa y se facturan aparte.</p>
     <p class="plan-note">Todo proyecto incluye: sistema a la medida con tu marca, demo funcional antes de desarrollar, módulos completos —pantallas, formularios, reportes y permisos—, usuarios y roles, hosting con respaldos, capacitación en la entrega y el módulo Soporte ODA integrado.</p>
-    <div style="margin-top:22px;background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 30px 60px -40px rgba(90,75,255,.7)">
+    <div class="emp-box" style="margin-top:22px;background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 30px 60px -40px rgba(90,75,255,.7)">
       <div style="max-width:520px">
         <span class="eyebrow">Plan Emprendedor</span>
         <h3 style="font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:10px 0 0">¿Estás arrancando y ninguno te calza? Tenemos un Plan Emprendedor.</h3>
