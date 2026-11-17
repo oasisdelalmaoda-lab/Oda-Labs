@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="oda-version" content="2026-09-28 · movil-v16 · precios-usd">
+<meta name="oda-version" content="2026-11-17 · v17 · sin-precios · web · clientes">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%2315141B' stroke-width='7.5' stroke-dasharray='12.5 4'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%235A4BFF' stroke-width='7.5' stroke-dasharray='12.5 75' stroke-dashoffset='-29'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F4F0E8'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%2315141B' stroke-width='7.5' stroke-dasharray='12.5 4'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%235A4BFF' stroke-width='7.5' stroke-dasharray='12.5 75' stroke-dashoffset='-29'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -321,6 +321,49 @@
     .navlinks .btn{padding:7px 11px !important;font-size:12px !important}
   }
 
+  /* CLIENTES — quienes han confiado en nosotros */
+  .clients{padding:64px 0 70px;background:var(--paper-2)}
+  .clients .head{text-align:center;max-width:640px;margin:0 auto 34px}
+  .clients .head h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;margin:12px 0 10px}
+  .clients .head p{font-size:16.5px;color:var(--muted)}
+  .logos{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+  .logos li{display:flex;align-items:center;justify-content:center;width:252px;height:150px;padding:20px 24px;transition:transform .25s ease;--h:64px}
+  .logos li:hover{transform:translateY(-4px)}
+  .logos li.wide{--h:58px}
+  .logos li.mid{--h:84px}
+  .logos li.tall{--h:110px}
+  .logos img{display:block;max-height:var(--h);max-width:100%;width:auto;height:auto}
+  /* versión a color por defecto; la monocromática (.m) queda guardada por si se quiere volver */
+  .logos .m{display:none}
+  @media(max-width:600px){.clients{padding:48px 0 52px}.logos{gap:10px}.logos li{width:calc(50% - 5px);height:112px;padding:14px 16px;--h:48px}.logos li.wide{--h:42px}.logos li.mid{--h:62px}.logos li.tall{--h:82px}}
+
+  /* PÁGINAS WEB */
+  .web .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media(max-width:900px){.web .grid{grid-template-columns:1fr;gap:32px}}
+  .web .sec-head{margin-bottom:24px}
+  .web ul.feat{list-style:none;padding:0;margin:0 0 28px;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+  @media(max-width:520px){.web ul.feat{grid-template-columns:1fr}}
+  .web ul.feat li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#4c4956}
+  .web ul.feat li svg{flex:none;margin-top:4px}
+  .web ul.feat li b{display:block;color:var(--ink);font-weight:700;font-size:15px}
+  .browser{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -45px rgba(20,20,30,.55)}
+  .browser .bbar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line);background:#FAF8F3}
+  .browser .bbar i{width:10px;height:10px;border-radius:50%;background:#DDD7CA;display:block}
+  .browser .url{margin-left:10px;flex:1;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
+  .browser .pg{padding:22px}
+  .browser .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .browser .nav b{font-weight:800;font-size:14px}
+  .browser .nav span{display:flex;gap:10px}
+  .browser .nav span i{width:34px;height:7px;border-radius:4px;background:var(--paper-2);display:block}
+  .browser .hb{background:var(--accent);border-radius:14px;padding:22px;color:#fff;margin-bottom:14px}
+  .browser .hb .t1{height:12px;width:72%;background:rgba(255,255,255,.9);border-radius:6px;margin-bottom:8px}
+  .browser .hb .t2{height:12px;width:48%;background:rgba(255,255,255,.9);border-radius:6px;margin-bottom:16px}
+  .browser .hb .cta{display:inline-block;background:var(--accent-2);border-radius:999px;width:96px;height:26px}
+  .browser .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .browser .cards div{height:70px;border-radius:10px;background:var(--paper);border:1px solid var(--line)}
+  .browser .devs{display:flex;gap:8px;margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .browser .devs span{border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+
   .fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .fade.in{opacity:1;transform:none}
 </style>
@@ -341,6 +384,7 @@
       <a href="#problema">El problema</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#casos">Casos</a>
+      <a href="#web">Páginas web</a>
       <a href="#planes">Planes</a>
       <a class="btn btn-primary" href="#contacto" style="padding:10px 18px;font-size:14px">Agenda un diagnóstico</a>
     </div>
@@ -351,7 +395,7 @@
 <header class="hero" id="top">
   <div class="wrap grid">
     <div>
-      <span class="eyebrow">Software de gestión a la medida · pymes</span>
+      <span class="eyebrow">Software a la medida · páginas web · pymes</span>
       <h1>El sistema operativo de tu empresa. <span class="hl">Con tu marca.</span></h1>
       <p class="sub">Construimos el software que ordena toda tu operación —inventario, ventas, finanzas, pedidos— hecho a tu medida, integrado a lo que ya usas, y montado en semanas. No una plantilla más.</p>
       <div class="cta-row">
@@ -382,6 +426,26 @@
     </div>
   </div>
 </header>
+
+<!-- CLIENTES — cada logo tiene versión monocromática (-mono) y a color (se muestra al pasar el mouse) -->
+<section class="clients" id="clientes" aria-labelledby="clientes-t">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Clientes</span>
+      <h2 id="clientes-t">Quienes han confiado en nosotros.</h2>
+      <p>Empresas de sectores muy distintos que ya operan con su propio sistema, su página o sus automatizaciones hechas por ODA Labs.</p>
+    </div>
+    <ul class="logos">
+      <li class="mid"><img class="m" src="assets/logos/oasis-del-alma-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/oasis-del-alma.png" alt="Oasis del Alma"></li>
+      <li class="tall"><img class="m" src="assets/logos/aguas-del-parque-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/aguas-del-parque.png" alt="Aguas del Parque"></li>
+      <li class="mid"><img class="m" src="assets/logos/una-mama-mas-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/una-mama-mas.png" alt="Una Mamá Más"></li>
+      <li class="wide"><img class="m" src="assets/logos/constructora-solanillas-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/constructora-solanillas.png" alt="Constructora Solanillas"></li>
+      <li class="tall"><img class="m" src="assets/logos/garden-box-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/garden-box.png" alt="Garden Box"></li>
+      <li class="wide"><img class="m" src="assets/logos/fundacion-solanillas-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/fundacion-solanillas.png" alt="Fundación Solanillas"></li>
+      <li class="wide"><img class="m" src="assets/logos/gazzia-mono.png" alt="" aria-hidden="true"><img class="c" src="assets/logos/gazzia.png" alt="Gazzia Uniformes Escolares"></li>
+    </ul>
+  </div>
+</section>
 
 <!-- PROBLEM -->
 <section class="problem" id="problema">
@@ -539,6 +603,35 @@
       <div class="mod"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#5A4BFF" stroke-width="1.8" stroke-linecap="round"/></svg><b>Manuales &amp; procesos</b></div>
     </div>
     <div class="sec-cta"><a class="btn btn-primary" href="#contacto">Agenda tu diagnóstico <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+</section>
+
+<!-- PÁGINAS WEB -->
+<section class="web" id="web">
+  <div class="wrap grid">
+    <div>
+      <div class="sec-head">
+        <span class="eyebrow">También hacemos páginas web</span>
+        <h2>Tu página web, conectada a tu operación.</h2>
+        <p>Diseñamos y publicamos sitios web, landing pages y tiendas en línea con tu marca. Y como también hacemos tu sistema, lo que pasa en la web —formularios, pedidos, citas— llega directo a tu operación.</p>
+      </div>
+      <ul class="feat">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Sitios corporativos</b>Quiénes son, qué hacen y cómo contactarlos.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Landing pages</b>Para campañas, lanzamientos y pauta en Meta o Google.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Tiendas en línea</b>Shopify o a la medida, con pagos Bold, Wompi o PSE.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Lista para vender</b>Rápida en el celular, con dominio propio y WhatsApp a un clic.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="#contacto">Quiero mi página web <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="browser" aria-hidden="true">
+      <div class="bbar"><i></i><i></i><i></i><span class="url">tuempresa.com</span></div>
+      <div class="pg">
+        <div class="nav"><b>Tu marca</b><span><i></i><i></i><i></i></span></div>
+        <div class="hb"><div class="t1"></div><div class="t2"></div><span class="cta"></span></div>
+        <div class="cards"><div></div><div></div><div></div></div>
+        <div class="devs"><span>Computador</span><span>Celular</span><span>Tablet</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -717,13 +810,12 @@
     <div class="sec-head">
       <span class="eyebrow">Planes</span>
       <h2>Un plan para cada etapa de tu empresa.</h2>
-      <p>Precios de referencia en dólares (USD); el valor final se ajusta al alcance real de tu operación.</p>
+      <p>Cada proyecto se cotiza según el alcance real de tu operación. Lo definimos juntos en el diagnóstico gratuito.</p>
     </div>
     <div class="plans">
       <div class="plan">
         <span class="pill">Start</span>
         <h3>Ordena lo básico</h3>
-        <div class="price">$800–$1,300 <small>USD</small></div>
         <p class="desc">Para empresas pequeñas que necesitan control por primera vez.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Diagnóstico y organización</li>
@@ -739,7 +831,6 @@
         <span class="tagline-feat">El más elegido</span>
         <span class="pill">Grow</span>
         <h3>Toma el control</h3>
-        <div class="price">$1,600–$2,500 <small>USD</small></div>
         <p class="desc">El sistema que ordena la operación completa de una pyme en marcha.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Start</li>
@@ -754,7 +845,6 @@
       <div class="plan">
         <span class="pill">Pro</span>
         <h3>Escala con estructura</h3>
-        <div class="price">desde $2,900 <small>USD</small></div>
         <p class="desc">Para empresas organizadas que quieren automatizar y crecer.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#5A4BFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Grow</li>
@@ -766,7 +856,7 @@
         <a class="btn btn-ghost" href="#contacto">Hablemos</a>
       </div>
     </div>
-    <p class="plan-note">Los precios cubren diseño, desarrollo e implementación. Los servicios de terceros —pasarela de pagos, hosting, firma digital, licencias— se contratan a nombre de tu empresa y se facturan aparte.</p>
+    <p class="plan-note">Cada proyecto cubre diseño, desarrollo e implementación. Los servicios de terceros —pasarela de pagos, hosting, firma digital, licencias— se contratan a nombre de tu empresa y se facturan aparte.</p>
     <p class="plan-note">Todo proyecto incluye: sistema a la medida con tu marca, demo funcional antes de desarrollar, módulos completos —pantallas, formularios, reportes y permisos—, usuarios y roles, hosting con respaldos, capacitación en la entrega y el módulo Soporte ODA integrado.</p>
     <div class="emp-box" style="margin-top:22px;background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 30px 60px -40px rgba(90,75,255,.7)">
       <div style="max-width:520px">
@@ -783,7 +873,6 @@
       <div class="support-grid">
         <div class="stier">
           <div class="pill">Esencial</div>
-          <div class="amt">$120 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Respaldo y copias de seguridad</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ajustes pequeños: hasta 5 horas al mes</li>
@@ -794,7 +883,6 @@
         </div>
         <div class="stier feat">
           <div class="pill">Plus</div>
-          <div class="amt">$220 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo de Esencial</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mejoras y nuevas automatizaciones</li>
@@ -805,7 +893,6 @@
         </div>
         <div class="stier">
           <div class="pill">Premium</div>
-          <div class="amt">desde $380 <small>USD/mes</small></div>
           <ul>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mejora continua y nuevas IA</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#FF6A3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Dashboards y reuniones semanales</li>
@@ -816,7 +903,6 @@
         </div>
       </div>
     </div>
-    <p class="plan-note">Los valores se liquidan en pesos a la TRM del día de la cuenta de cobro.</p>
   </div>
 </section>
 
